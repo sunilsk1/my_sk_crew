@@ -12,12 +12,11 @@ MODEL=ollama/llama3.1:8b
 API_BASE=http://localhost:11434
 ```
 
-In the `agents.yaml`. If you want to use a differet model for any agent then add the tag
-```
-..
-  llm: >
-     model='gemini/gemini-2.0-flash'
-```
+### Using different LLM for a specific Agent
+In the `agents.yaml`.  add the llm provider details . Make sure the `GOOGLE_API_KEY=<yourkey>` is added in the .env file
+
+`llm: 'gemini/gemini-2.0-flash'`
+
 example :
 ```
 researcher:
@@ -30,12 +29,11 @@ researcher:
     developments in {topic}. Known for your ability to find the most relevant
     information and present it in a clear and concise manner.
   current_date: {current_date}
-  llm: >
-     model='gemini/gemini-2.0-flash'
+  llm: 'gemini/gemini-2.0-flash'
+
 ```
 
-
-NOTE : The model prefix 'gemini/' is important to tell LiteLLM which provider to use.
+:stop: NOTE : The model prefix 'gemini/' is important to tell LiteLLM which provider to use.
 
 
 ## Installation
