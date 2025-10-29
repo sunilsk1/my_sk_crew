@@ -35,6 +35,17 @@ researcher:
 
 :stop: NOTE : The model prefix 'gemini/' is important to tell LiteLLM which provider to use.
 
+In the .env file add the following to disable the telemetry if you are in secured server policies and stay completely local llm
+
+```
+# Disable CrewAI telemetry
+CREWAI_DISABLE_TELEMETRY=true
+OTEL_SDK_DISABLED=true
+CREWAI_DISABLE_TRACKING=true
+```
+
+
+---
 
 ## Installation
 
