@@ -1,10 +1,30 @@
-from crewai import Agent, Crew, Process, Task
+from crewai import Agent, Crew, Process, Task,LLM
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
+import os
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
+
+
+# # --- 1. Define the Ollama LLM (Default) ---
+# # This pulls the model and base_url from your .env file automatically
+# ollama_llm = LLM(
+#     model=os.getenv("MODEL"), 
+#     base_url=os.getenv("API_BASE"),
+#     # Since Ollama doesn't use an API key, you don't need to pass one
+# )
+
+# # --- 2. Define the Gemini LLM (Specific Agent) ---
+# # The model prefix 'gemini/' is important to tell LiteLLM which provider to use.
+# # It will automatically pick up the key from the GOOGLE_API_KEY env var.
+# gemini_llm = LLM(
+#     model='gemini/gemini-2.0-flash', # Or 'gemini/gemini-2.5-pro'
+#     # The api_key and provider are often inferred from the model name and env var.
+# )
+
+## If you prefer the above way then in the @agents add the llm=gemini_llm
 
 @CrewBase
 class MySkCrew():
@@ -23,7 +43,8 @@ class MySkCrew():
     def researcher(self) -> Agent:
         return Agent(
             config=self.agents_config['researcher'], # type: ignore[index]
-            verbose=True
+            verbose=True,
+            # llm=gemini_llm
         )
 
     @agent

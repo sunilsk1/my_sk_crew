@@ -7,6 +7,9 @@ researcher:
     You're a seasoned researcher with a knack for uncovering the latest
     developments in {topic}. Known for your ability to find the most relevant
     information and present it in a clear and concise manner.
+  current_date: {current_date}
+  llm: 'gemini/gemini-2.0-flash'
+
 
 reporting_analyst:
   role: >
